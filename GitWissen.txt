@@ -1,0 +1,2 @@
+1. Verwende von Beginn an eine .gitignore Datei um Dateien auszuschließen.
+2. Verwende Forwardslashes in der .gitignore Datei

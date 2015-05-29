@@ -1,0 +1,9 @@
+nxVideoWeb/node_modules/
+nxVideoWeb/obj/
+wcfRestApp/bin/
+wcfRestApp/obj/
+wcfRestLib/bin/
+wcfRestLib/obj/
+*.suo
+Dependencies/nexus.dll
+nxVideoWeb/database/mongoInstance/

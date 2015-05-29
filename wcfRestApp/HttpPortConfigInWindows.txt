@@ -1,0 +1,13 @@
+﻿netsh http add urlacl url=http://+:9001/Provider user=Indanet\Alexander.Geltermair
+netsh http add urlacl url=http://+:9002/Provider user=Indanet\Alexander.Geltermair
+netsh http add urlacl url=http://+:9003/Provider user=Indanet\Alexander.Geltermair
+netsh http add urlacl url=http://+:9004/Provider user=Indanet\Alexander.Geltermair
+netsh http add urlacl url=http://+:9005/Provider user=Indanet\Alexander.Geltermair
+netsh http add urlacl url=http://+:9006/Provider user=Indanet\Alexander.Geltermair
+netsh http add urlacl url=http://+:9007/Provider user=Indanet\Alexander.Geltermair
+netsh http add urlacl url=http://+:9008/Provider user=Indanet\Alexander.Geltermair
+netsh http add urlacl url=http://+:9009/Provider user=Indanet\Alexander.Geltermair
+netsh http add urlacl url=http://+:9010/Provider user=Indanet\Alexander.Geltermair
+
+
+
