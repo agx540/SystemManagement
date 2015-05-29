@@ -22,7 +22,8 @@ module.exports = function(){
         if(req.is('application/json')){
             console.log('application/json  /user: ' + req.body.username + ' email: ' + req.body.email);
             
-            User.findOne({ 'username': req.body.username}, function(err, user) {
+            User.findOne({ $or: [{'username': req.body.username}, {'email': req.body.email}] }, 
+                        function(err, user) {
                 
                 // In case of any error
                 if(err){
@@ -30,8 +31,18 @@ module.exports = function(){
                 }
                 
                 // already exists
+                var returnState = "";
                 if(user){
-                    console.log('User already exists with username: '+ req.body.username);
+                    if(user.username == req.body.username){
+                        returnState = 'Username already in use: '+ req.body.username;
+                        console.log('Username already in use: '+ req.body.username);
+                    }
+                    if(user.email == req.body.email){
+                        returnState += 'Email already in use: '+ req.body.email;
+                        console.log('Email already in use: '+ req.body.email);
+                    }
+                    res.send({state: 'failure', user: null, message: returnState});
+                    
                 }
                 else{
                     var newUser = new User();
@@ -39,7 +50,8 @@ module.exports = function(){
                     newUser.username = req.body.username;
                     newUser.email = req.body.email;
                     newUser.password = req.body.password;
-                    newUser.isAdmin = req.body.isAdmin;
+                    //TODO: add admin flag in complete stack
+                    newUser.isAdmin = false;
                     
             		// save the user
         			newUser.save(function(err) {
@@ -48,7 +60,9 @@ module.exports = function(){
                             //TODO: How to handle exceptions?????  
         					throw err;  
         				}
-        				console.log(newUser.username + ' stored in db');    
+        				console.log(newUser.username + ' stored in db');   
+                        
+                        res.send({state: 'success', user: newUser}); 
         			});
                 }
                 
@@ -59,7 +73,7 @@ module.exports = function(){
             console.log('/user: ' + req.body);    
         }
         
-        res.send('Got a POST request at /user');
+        
         
     });
     
