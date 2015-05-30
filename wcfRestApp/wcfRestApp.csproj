@@ -38,9 +38,6 @@
     <StartupObject>wcfRestApp.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="neXus, Version=4.0.0.0, Culture=neutral, PublicKeyToken=4d0f386e247eb872, processorArchitecture=MSIL">
-      <HintPath>..\Dependencies\neXus.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -58,9 +55,6 @@
       <Project>{C5D586B5-6147-48E5-9E64-5E2BF503D192}</Project>
       <Name>wcfRestLib</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="HttpPortConfigInWindows.txt" />

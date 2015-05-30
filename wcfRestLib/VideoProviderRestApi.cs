@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ServiceModel;
-using Indanet.neXus.Debugging;
 using System.ServiceModel.Web;
 
 namespace wcfRestLib
@@ -14,15 +13,14 @@ namespace wcfRestLib
     [ServiceContract]
     public class VideoProviderRestApi
     {
-        WardTrace TRACE;
+        int m_CamCount = 1;
         VideoProvider m_Provider;
-        public VideoProviderRestApi(VideoProvider provider, Uri baseUri, WardTrace parentTrace)
+        public VideoProviderRestApi(VideoProvider provider, Uri baseUri, int camCount)
         {
-            TRACE = new WardTrace("VideoProviderRestApi: "+baseUri.ToString(), parentTrace, null);
-
             m_Provider = provider;
+            m_CamCount = camCount;
 
-            TRACE.Info("VideoProviderRestApi created!");
+            Console.WriteLine(string.Format("VideoProviderRestApi created! CamCount: {0}", m_CamCount));
         }
 
         [WebInvoke(Method = "POST", UriTemplate = "/CompilationEvents")]
@@ -31,35 +29,35 @@ namespace wcfRestLib
         {
             try
             {
-                TRACE.Function("PostEvent(): ENTER. newEvent[{0}]", newEvent);
+                Console.WriteLine(string.Format("PostEvent(): ENTER. newEvent[{0}]", newEvent));
 
                 //TODO: AG: Send it to real Storage
 
-                TRACE.Info("PostEvent(): SUCCEEDED. newEvent[{0}]", newEvent);
+                Console.WriteLine(string.Format("PostEvent(): SUCCEEDED. newEvent[{0}]", newEvent));
             }
             catch (Exception ex)
             {
-                TRACE.Error("PostEvent(): FAILED. newEvent[{0}]\n{1}", newEvent, ex);
+                Console.WriteLine(string.Format("PostEvent(): FAILED. newEvent[{0}]\n{1}", newEvent, ex));
                 //TODO: AG: What to do here? 
                 //throw;
             }
             finally
             {
-                TRACE.Function("PostEvent(): LEAVE. newEvent[{0}]", newEvent);
+                Console.WriteLine(string.Format("PostEvent(): LEAVE. newEvent[{0}]", newEvent));
             }
         }
 
-        [WebGet(UriTemplate = "/Provider" ,ResponseFormat=WebMessageFormat.Json)]
+        [WebGet(UriTemplate = "/Status" ,ResponseFormat=WebMessageFormat.Json)]
         public VideoProviderState GetProviderState()
         {
             VideoProviderState state = new VideoProviderState();
             state.OperationMode = VideoProviderOperationMode.Recording;
             state.OperationState = VideoProviderOperationState.Recording;
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < m_CamCount; i++)
                 AddCameraToProviderState(state, "cam" + i);
 
-            TRACE.Info("GetProviderState called!");
+            Console.WriteLine(string.Format("GetProviderState called!"));
 
             return state;
         }

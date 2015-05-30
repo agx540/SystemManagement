@@ -5,7 +5,6 @@ using System.Text;
 using System.ServiceModel;
 using System.Runtime.Serialization;
 
-using Indanet.neXus.Wcf;
 
 namespace wcfRestLib
 {
@@ -13,7 +12,7 @@ namespace wcfRestLib
     /// Interface for 3rd party applications with reduced dependencies
     /// </summary>
     [ServiceContract]
-    public interface IVideoProviderApiServer : IKeepAlive
+    public interface IVideoProviderApiServer 
     {
         #region Modes / States
 

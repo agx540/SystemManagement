@@ -5,34 +5,39 @@ using System.Text;
 using System.ServiceModel.Web;
 using System.ServiceModel.Description;
 using System.ServiceModel;
-using Indanet.neXus.Debugging;
 
 namespace wcfRestLib
 {
     public class Host
     {
-        WardTrace TRACE = Indanet.neXus.Application.TRACE;
         VideoProviderRestApi m_restApi;
         WebServiceHost m_Host;
         Uri m_baseUri;
 
-        public Host(string baseUri)
+        public Host(string baseUri, VideoProviderRestApi videoProvider)
         {
             m_baseUri = new Uri(baseUri);
-            m_restApi = new VideoProviderRestApi(new VideoProvider(), m_baseUri, TRACE);
+            m_restApi = videoProvider;
 
-            TRACE.Info("Host created!!!");
+            Console.WriteLine("Host created!");
         }
 
         public void Start()
         {
-            m_Host = new WebServiceHost(m_restApi, m_baseUri);
-            ServiceEndpoint ep = m_Host.AddServiceEndpoint(m_restApi.GetType(), new WebHttpBinding(), "");
-            ServiceDebugBehavior stp = m_Host.Description.Behaviors.Find<ServiceDebugBehavior>();
-            stp.HttpHelpPageEnabled = false;
-            m_Host.Open();
+            try
+            {
+                m_Host = new WebServiceHost(m_restApi, m_baseUri);
+                ServiceEndpoint ep = m_Host.AddServiceEndpoint(m_restApi.GetType(), new WebHttpBinding(), "");
+                ServiceDebugBehavior stp = m_Host.Description.Behaviors.Find<ServiceDebugBehavior>();
+                stp.HttpHelpPageEnabled = false;
+                m_Host.Open();
 
-            TRACE.Info("Host started at {0}", m_baseUri);
+                Console.WriteLine(string.Format("Host started at {0}", m_baseUri));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(string.Format("Starting host failed for {0}\n{1}", m_baseUri, ex));
+            }
         }
     }
 }

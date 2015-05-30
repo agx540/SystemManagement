@@ -3,28 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using wcfRestLib;
-using Indanet.neXus.Debugging;
 
 namespace wcfRestApp
 {
     class Program
     {
-        static WardTrace STRACE = Indanet.neXus.Application.TRACE;
-
         static void Main(string[] args)
         {
-            STRACE.Info("AppStarted!");
+            Console.WriteLine("App started");
 
             Host host;
             List<Host> hosts = new List<Host>();
-            
+
+            int camCount = 10;
             for(int i = 9001; i < 9011; i++)
             {
                 string uri = string.Format("http://localHost:{0}/Provider", i);
-                host = new Host(uri);
+                VideoProviderRestApi videoProvider = new VideoProviderRestApi(new VideoProvider(), new Uri(uri), camCount);
+                host = new Host(uri, videoProvider);
                 host.Start();
-
+                
                 hosts.Add(host);
+
+                camCount++;
             }
             
             Console.ReadLine();

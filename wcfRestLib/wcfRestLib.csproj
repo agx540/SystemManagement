@@ -38,12 +38,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Dependencies\Json60r8\Bin\Net40\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="neXus">
-      <HintPath>..\Dependencies\neXus.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
