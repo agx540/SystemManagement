@@ -30,6 +30,17 @@ var userSchema = new Schema({
   isAdmin: { type: Boolean, required: true },
 });
 
+var providerSchema = new Schema({
+  name: String,
+  operationMode: String,
+  operationState: String,
+  date: { type: Date, default: Date.now }, 
+  cameras: [{
+      name: String,
+      operationMode: String,
+      operationState: String   
+    }]
+});
 
 // Bcrypt middleware
 //TODO
@@ -40,3 +51,6 @@ var userSchema = new Schema({
 // Export user model
 var userModel = mongoose.model('User', userSchema);
 exports.userModel = userModel;
+
+var providerModel = mongoose.model('Provider', providerSchema);
+exports.providerModel = providerModel;

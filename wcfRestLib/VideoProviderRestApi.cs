@@ -51,13 +51,14 @@ namespace wcfRestLib
         public VideoProviderState GetProviderState()
         {
             VideoProviderState state = new VideoProviderState();
+            state.ProviderSystemName = m_Provider.SystemName;
             state.OperationMode = VideoProviderOperationMode.Recording;
             state.OperationState = VideoProviderOperationState.Recording;
 
             for (int i = 0; i < m_CamCount; i++)
                 AddCameraToProviderState(state, "cam" + i);
 
-            Console.WriteLine(string.Format("GetProviderState called!"));
+            Console.WriteLine(string.Format("GetProviderState called! camCount: {0}", m_CamCount));
 
             return state;
         }

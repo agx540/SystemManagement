@@ -7,5 +7,10 @@ namespace wcfRestLib
 {
     public class VideoProvider
     {
+        public string SystemName { get; protected set; }
+        public VideoProvider(string name)
+        {
+            SystemName = name;
+        }
     }
 }

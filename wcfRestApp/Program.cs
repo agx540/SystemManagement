@@ -19,7 +19,7 @@ namespace wcfRestApp
             for(int i = 9001; i < 9011; i++)
             {
                 string uri = string.Format("http://localHost:{0}/Provider", i);
-                VideoProviderRestApi videoProvider = new VideoProviderRestApi(new VideoProvider(), new Uri(uri), camCount);
+                VideoProviderRestApi videoProvider = new VideoProviderRestApi(new VideoProvider("ProviderName" + i), new Uri(uri), camCount);
                 host = new Host(uri, videoProvider);
                 host.Start();
                 

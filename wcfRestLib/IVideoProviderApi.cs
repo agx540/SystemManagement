@@ -220,6 +220,8 @@ namespace wcfRestLib
     public class VideoProviderState
     {
         [DataMember]
+        public string ProviderSystemName;
+        [DataMember]
         public VideoProviderOperationMode OperationMode;
         [DataMember]
         public VideoProviderOperationState OperationState;
@@ -228,6 +230,7 @@ namespace wcfRestLib
 
         public VideoProviderState()
         {
+            ProviderSystemName = "";
             OperationMode = VideoProviderOperationMode.Unknown;
             OperationState = VideoProviderOperationState.Unknown;
             CameraStates = new List<VideoProviderCameraState>();
@@ -239,6 +242,7 @@ namespace wcfRestLib
         {
             StringBuilder buf = new StringBuilder(1024);
 
+            buf.AppendFormat("\nProviderSystemName[{0}]", ProviderSystemName);
             buf.AppendFormat("\nOperationMode[{0}]", OperationMode);
             buf.AppendFormat("\nOperationState[{0}]", OperationState);
 

@@ -36,9 +36,14 @@ var http = require('http');
 
 //The url we want is: 'www.random.org/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
 var options = {
-  host: 'localhost:9001',
-  path: '/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new'
+  host: 'localhost',
+  path: '/Provider/Status',
+  port: '9001'
+  
 };
+
+var mongoose = require('mongoose');   
+var Provider = mongoose.model('Provider');
 
 callback = function(response) {
   var str = '';
@@ -51,13 +56,48 @@ callback = function(response) {
   //the whole response has been recieved, so we just print it out here
   response.on('end', function () {
     console.log(str);
+    var provider = new Provider();
+    var parsed = JSON.parse(str);
+    
+    provider.name = parsed.ProviderSystemName;
+    provider.operationMode = parsed.operationMode;
+    provider.operationState = parsed.operationState;
+
+    for(var i = 0 ; i < parsed.CameraStates.length; i++){
+        provider.cameras.push({
+            'name': parsed.CameraStates[i].CameraSystemName,
+            'operationMode': parsed.CameraStates[i].CameraRecordingMode,
+            'operationState': parsed.CameraStates[i].CameraOperationState   
+            });
+    };
+    
+	// save provider state
+	provider.save(function(err) {
+		if (err){
+			console.log('Error in Saving provider state: '+err);
+            //TODO: How to handle exceptions?????  
+			throw err;  
+		}
+		console.log(provider.name + ' stored in db');   
+	});
+    
   });
 }
 
 http.request(options, callback).end();
-
-
-
+console.log('------------------');
+options.port = '9002';
+http.request(options, callback).end();
+console.log('------------------');
+options.port = '9003';
+http.request(options, callback).end();
+console.log('------------------');
+options.port = '9004';
+http.request(options, callback).end();
+console.log('------------------');
+options.port = '9005';
+http.request(options, callback).end();
+console.log('------------------');
 
 app.get('/', function (req, res) {
   res.send('Hello World!');
