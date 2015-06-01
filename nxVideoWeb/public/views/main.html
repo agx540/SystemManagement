@@ -1,17 +1,17 @@
 <div class="clearfix">
-  <form ng-Submit="post()" ng-show="authenticated">
-    <h4>{{current_user}} says</h4>
-    <textarea required class="form-control" maxlength="200" rows="3" placeholder="Say something" ng-model="newPost.text"></textarea>
-    <input class="btn submit-btn pull-right" type="submit" value="Chirp!" />
-  </form>
+
 </div>
 <div id="post-stream">
-	<h4>Chirp Feed</h4>
-		<div class="post" ng-repeat="post in posts | orderBy:'created_at':true" ng-class-odd="'odd'" ng-class-even="'even'"> 
-			<p>{{post.text}}</p>
-			<small>Posted by @{{post.created_by}}</small>
-			<small class="pull-right">{{post.created_at | date:"h:mma 'on' MMM d, y"}}</small>
+	<h4>Provider</h4>
+	<div class="provider" ng-repeat="provider in providers | orderBy:'name' " ng-class-odd="'odd'" ng-class-even="'even'">
+		<p>{{provider.name}}</p>
+<!--		<div class="camera" ng-repeat="camera in provider.cameras"  ng-class-odd="'odd'" ng-class-even="'even'"> 
+			<p>{{camera.name}}</p>
+			<p>{{camera.opertationState}}</p>
+			<p>{{camera.opertationMode}}</p>
+-->
 		</div>
+	</div>
 </div>
 
 

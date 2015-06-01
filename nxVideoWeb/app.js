@@ -10,6 +10,8 @@ var bodyParser = require('body-parser');
 var dbschema_database = require('./database/dbschema');
 //add user routing
 var user_routes = require('./routes/user')();
+//add provider routing
+var provider_routes = require('./routes/providers')();
 
 var app = express();
 
@@ -28,6 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', user_routes);
+app.use('/', provider_routes);
 
 
 
@@ -84,20 +87,20 @@ callback = function(response) {
   });
 }
 
-http.request(options, callback).end();
-console.log('------------------');
-options.port = '9002';
-http.request(options, callback).end();
-console.log('------------------');
-options.port = '9003';
-http.request(options, callback).end();
-console.log('------------------');
-options.port = '9004';
-http.request(options, callback).end();
-console.log('------------------');
-options.port = '9005';
-http.request(options, callback).end();
-console.log('------------------');
+//http.request(options, callback).end();
+//console.log('------------------');
+//options.port = '9002';
+//http.request(options, callback).end();
+//console.log('------------------');
+//options.port = '9003';
+//http.request(options, callback).end();
+//console.log('------------------');
+//options.port = '9004';
+//http.request(options, callback).end();
+//console.log('------------------');
+//options.port = '9005';
+//http.request(options, callback).end();
+//console.log('------------------');
 
 app.get('/', function (req, res) {
   res.send('Hello World!');

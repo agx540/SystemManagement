@@ -28,22 +28,14 @@ app.config(function($routeProvider){
 		});
 });
 
-app.factory('postService', function($resource){
-	return $resource('/api/posts/:id');
+app.factory('providerService', function($resource){
+	return $resource('/Provider');
 });
 
-app.controller('mainController', function(postService, $scope, $rootScope){
-	$scope.posts = postService.query();
-	$scope.newPost = {created_by: '', text: '', created_at: ''};
+app.controller('mainController', function(providerService, $scope, $rootScope){
+	$scope.providers = providerService.query();
 	
-	$scope.post = function() {
-	  $scope.newPost.created_by = $rootScope.current_user;
-	  $scope.newPost.created_at = Date.now();
-	  postService.save($scope.newPost, function(){
-	    $scope.posts = postService.query();
-	    $scope.newPost = {created_by: '', text: '', created_at: ''};
-	  });
-	};
+
 });
 
 app.controller('authController', function($scope, $http, $rootScope, $location){
@@ -76,3 +68,4 @@ app.controller('authController', function($scope, $http, $rootScope, $location){
     });
   };
 });
+
