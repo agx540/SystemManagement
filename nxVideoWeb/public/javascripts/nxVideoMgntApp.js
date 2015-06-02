@@ -35,6 +35,9 @@ app.factory('providerService', function($resource){
 app.controller('mainController', function(providerService, $scope, $rootScope){
 	$scope.providers = providerService.query();
 	
+  $scope.setValue = function(provider){
+    $scope.selectedProvider = provider;
+  }
 
 });
 

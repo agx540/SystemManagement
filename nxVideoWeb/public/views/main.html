@@ -1,16 +1,26 @@
 <div class="clearfix">
 
 </div>
-<div id="post-stream">
+<div id="post-stream" >
 	<h4>Provider</h4>
-	<div class="provider" ng-repeat="provider in providers | orderBy:'name' " ng-class-odd="'odd'" ng-class-even="'even'">
-		<p>{{provider.name}}</p>
-<!--		<div class="camera" ng-repeat="camera in provider.cameras"  ng-class-odd="'odd'" ng-class-even="'even'"> 
-			<p>{{camera.name}}</p>
-			<p>{{camera.opertationState}}</p>
-			<p>{{camera.opertationMode}}</p>
--->
-		</div>
+	
+	<div class="col-md-4">
+		<ul class="list-group">
+			<li class="list-group-item"  
+			ng-class="{ 'list-group-item-success' : provider.operationState == 4, 'list-group-item-warning' : provider.operationState != 4}"
+			ng-repeat="provider in providers | orderBy:'name' " 
+			ng-click="setValue(provider)" >{{provider.name}}</li>
+
+		</ul>	
+	</div>
+	<div class="col-md-8">
+		<div>Cameras for Provider: {{selectedProvider.name}}</div>
+		<ul class="list-group">
+			<li ng-repeat="camera in selectedProvider.cameras"
+			class="list-group-item" 
+			ng-class="{ 'list-group-item-success' : camera.operationState == 4, 'list-group-item-warning' : camera.operationState != 4}"
+			>{{camera.name}}: State:{{camera.operationState}}</li>
+		</ul>
 	</div>
 </div>
 
