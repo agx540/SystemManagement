@@ -1,4 +1,4 @@
-var app = angular.module('nxVideoMgntApp', ['ngRoute', 'ngResource']).run(function($rootScope) {
+var app = angular.module('nxVideoMgntApp', ['ngRoute', 'ngResource', 'agAuthentication','agProvider']).run(function($rootScope) {
 	$rootScope.authenticated = false;
 	$rootScope.current_user = '';
 	
@@ -13,8 +13,12 @@ app.config(function($routeProvider){
 	$routeProvider
 		//the timeline display
 		.when('/', {
-			templateUrl: 'main.html',
-			controller: 'mainController'
+			templateUrl: 'provider.html',
+			controller: 'providerController'
+		})
+		.when('/Provider', {
+			templateUrl: 'provider.html',
+			controller: 'providerController'
 		})
 		//the login display
 		.when('/login', {
@@ -28,47 +32,4 @@ app.config(function($routeProvider){
 		});
 });
 
-app.factory('providerService', function($resource){
-	return $resource('/Provider');
-});
-
-app.controller('mainController', function(providerService, $scope, $rootScope){
-	$scope.providers = providerService.query();
-	
-  $scope.setValue = function(provider){
-    $scope.selectedProvider = provider;
-  }
-
-});
-
-app.controller('authController', function($scope, $http, $rootScope, $location){
-  $scope.user = {username: '', password: ''};
-  $scope.error_message = '';
-
-  $scope.login = function(){
-    $http.post('/auth/login', $scope.user).success(function(data){
-      if(data.state == 'success'){
-        $rootScope.authenticated = true;
-        $rootScope.current_user = data.user.username;
-        $location.path('/');
-      }
-      else{
-        $scope.error_message = data.message;
-      }
-    });
-  };
-
-  $scope.register = function(){
-    $http.post('/user', $scope.user).success(function(data){
-      if(data.state == 'success'){
-        $rootScope.authenticated = true;
-        $rootScope.current_user = data.user.username;
-        $location.path('/');
-      }
-      else{
-        $scope.error_message = data.message;
-      }
-    });
-  };
-});
 
