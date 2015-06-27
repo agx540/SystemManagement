@@ -1,0 +1,17 @@
+
+
+
+#csv filter for wardtrace log files
+filter {
+	csv{
+		separator => "|"
+	}
+}
+
+#elasticsearch output
+elasticsearch { 
+	host => "localhost"
+	index => "logstash-wardfile"
+	cluster => "ag_es_cluster"
+	}
+
