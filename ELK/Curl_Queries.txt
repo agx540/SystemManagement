@@ -1,0 +1,42 @@
+GET /logstash-nxvideocsvfile/_search?pretty
+
+#Select fields which are shown in result set
+GET /logstash-nxvideocsvfile/_search?pretty
+{
+  "fields": ["GOPs dropped","GOPs dropped/s","Timestamp","@timestamp","StartTime","StartTimenxVideo","message"]
+}
+
+# All entries with "GOPs dropped/s" greater than 0
+GET /logstash-nxvideocsvfile/_search
+{
+    "query" : {
+        "filtered" : {
+            "filter" : {
+                "range" : {
+                    "GOPs dropped/s": {
+                        "gt" : 0
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+# All entries with "GOPs dropped/s" greater than 0
+#but only with selected fields
+GET /logstash-nxvideocsvfile/_search
+{
+  "fields": ["GOPs dropped","GOPs dropped/s","Timestamp","@timestamp","StartTime"],  
+    "query" : {
+        "filtered" : {
+            "filter" : {
+                "range" : {
+                    "GOPs dropped/s": {
+                        "gt" : 0
+                    }
+                }
+            }
+        }
+    }
+}
