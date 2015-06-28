@@ -1,4 +1,5 @@
 var elasticsearch = require('elasticsearch');
+var indexName = 'logstash-wardfile';
 var client = new elasticsearch.Client({
   host: 'localhost:9200',
   log:   [{
@@ -21,12 +22,12 @@ client.ping({
 });
 
 client.indices.delete({
-  index: 'logstash-nxvideocsvfile',
+  index: indexName,
   ignore: [404]
 }).then(function (body) {
   // since we told the client to ignore 404 errors, the
   // promise is resolved even if the index does not exist
-  console.log('index was deleted or never existed');
+  console.log(indexName + ' index was deleted or never existed');
 }, function (error) {
-  console.log('index could not be deleted! ' + error);
+  console.log(indexName + ' index could not be deleted! ' + error);
 });
