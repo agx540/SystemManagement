@@ -40,3 +40,32 @@ GET /logstash-nxvideocsvfile/_search
         }
     }
 }
+
+
+
+# All entries with "GOPs dropped/s" greater than 0
+#countet in time buckets
+GET /logstash-nxvideocsvfile/_search?search_type=count 
+{
+  "fields": ["GOPs dropped","GOPs dropped/s","Timestamp","@timestamp","StartTime"],  
+    "query" : {
+        "filtered" : {
+            "filter" : {
+                "range" : {
+                    "GOPs dropped/s": {
+                        "gt" : 0
+                    }
+                }
+            }
+        }
+    },
+    "aggs": {
+      "NAME": {
+        "date_histogram": {
+          "field": "@timestamp",
+          "interval": "20m",
+          "min_doc_count": 0
+        }
+      }
+    }
+}

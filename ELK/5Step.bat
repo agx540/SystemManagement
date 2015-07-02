@@ -5,7 +5,7 @@ del C:\Users\Alexander\Desktop\TestLogs\NAS201_eurotech_blau\nxVideoProvider\cop
 node CleanOldIndexesWard.js
 
 :: copy logs to logstash log directory
-xcopy /Y C:\Users\Alexander\Desktop\TestLogs\NAS201_eurotech_blau\nxVideoProvider\WardTraceTest.log C:\Users\Alexander\Desktop\TestLogs\NAS201_eurotech_blau\nxVideoProvider\copy\
+xcopy /Y C:\Users\Alexander\Desktop\TestLogs\NAS201_eurotech_blau\nxVideoProvider\*.log C:\Users\Alexander\Desktop\TestLogs\NAS201_eurotech_blau\nxVideoProvider\copy\
 
 :: start logstash
 start LogstashTestLogWardFile.bat
