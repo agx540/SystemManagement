@@ -7,3 +7,4 @@ wcfRestLib/obj/
 *.suo
 Dependencies/nexus.dll
 nxVideoWeb/database/mongoInstance/
+gulp/node_modules/
