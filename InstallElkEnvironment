@@ -1,0 +1,7 @@
+0. Download Seite ELK Stack https://www.elastic.co/de/downloads
+1. Download Elasticsearch 2.3.3
+1.1 Entpacken in Elasticsearch Ordner
+2. Download Logstash 2.3.3
+2.1 Entpacken Logstash Ordner
+3. Download Kibana 4.5.1
+3.1 Entpacken in Kibana Ordner
