@@ -1,0 +1,1 @@
+start .\kibana\bin\kibana.bat
