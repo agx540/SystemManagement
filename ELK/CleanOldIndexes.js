@@ -16,7 +16,7 @@ client.ping({
   if (error) {
     console.error('elasticsearch cluster is down!');
   } else {
-    console.log('All is well');
+    console.log('Cluster is online!');
   }
 });
 
@@ -30,3 +30,4 @@ client.indices.delete({
 }, function (error) {
   console.log('index could not be deleted! ' + error);
 });
+
