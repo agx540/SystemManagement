@@ -1,0 +1,12 @@
+Logstash
+  -CSV Input Filter liest Datei erst nach Änderung der Datei ein.
+   Es reicht die mit Excel die Datei einfach abzuspeichern.
+
+
+
+ElasticSearch
+
+
+
+
+Kibana
