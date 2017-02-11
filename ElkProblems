@@ -1,0 +1,15 @@
+Logstash
+  -CSV Input Filter liest Datei erst nach Änderung der Datei ein.
+   Es reicht die mit Excel die Datei einfach abzuspeichern.
+  -Dateien mit aktuellem Änderungsdatum in das von Logstash überwachte
+   Verzeichnis zu kopieren triggert den Importvorgang an.
+  -Achtung: Keine Lucence Sonderzeichen in den Spaltenname verwenden,
+   sonst gibt es nachher Problem beim Suchen.
+
+ElasticSearch
+-Achtung: Keine Lucence Sonderzeichen in den Spaltenname verwenden,
+   sonst gibt es nachher Problem beim Suchen.
+
+
+
+Kibana
