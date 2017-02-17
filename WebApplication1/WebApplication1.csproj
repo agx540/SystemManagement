@@ -94,6 +94,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="js\window.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -106,7 +107,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\..\Windows\System32\inetsrv\appcmd.xml">
+      <Link>iis\appcmd.xml</Link>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="static\Document.html" />
     <Content Include="static\staticdefault.htm" />
+    <Content Include="static\Wissen.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

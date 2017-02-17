@@ -28,6 +28,5 @@ C:\Repo\SystemManagement\WebApplication1\bin\Microsoft.AI.Web.xml
 C:\Repo\SystemManagement\WebApplication1\bin\Microsoft.AI.WindowsServer.xml
 C:\Repo\SystemManagement\WebApplication1\bin\Microsoft.ApplicationInsights.xml
 C:\Repo\SystemManagement\WebApplication1\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Repo\SystemManagement\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
 C:\Repo\SystemManagement\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Repo\SystemManagement\WebApplication1\obj\Debug\WebApplication1.pdb
