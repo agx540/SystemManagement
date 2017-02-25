@@ -113,8 +113,14 @@
       <Link>iis\appcmd.xml</Link>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="static\ClientStructure.html" />
     <Content Include="static\Document.html" />
+    <Content Include="static\Layout.html" />
+    <Content Include="static\ProblemsWhileCoding.html" />
+    <Content Include="static\SetupDevEnvironment.html" />
+    <Content Include="static\SetupWebsite.html" />
     <Content Include="static\staticdefault.htm" />
+    <Content Include="static\UsedTools.html" />
     <Content Include="static\Wissen.html" />
     <Content Include="Web.config" />
   </ItemGroup>
