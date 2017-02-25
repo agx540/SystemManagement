@@ -38,15 +38,16 @@
 
     <h1>Client structure</h1>
     <ul>
-        <li>Browser = HTML, CSS, Javascript
-            
-        </li>
+        <li>Browser = HTML, CSS, Javascript</li>
+        <li>DOM = Interface betweeb JS and HTML.;;</li>
     </ul>
 
+    <!-- sync erlaubt dem browser das html parsen fortzusetzen
+         während das script geladen wird.-->
     <script src="../js/ThisAndThat.js"></script>
     <script>
-        //alert("aasd");
-        //ShowMessageHalloWelt();
+        alert(window.ThisAndThat.variable);
+        window.ThisAndThat.showMessageHalloWelt();
     </script>
 </body>
 

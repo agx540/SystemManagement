@@ -10,5 +10,6 @@ Release/
 *.opensdf
 *.tlog
 *.log
+*.cache
 TestResult.xml
 *.VisualState.xml
